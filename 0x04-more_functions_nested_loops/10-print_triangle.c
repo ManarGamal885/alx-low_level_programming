@@ -6,27 +6,41 @@
  */
 void print_triangle(int size)
 {
- if (size <= 0)
- {
- _putchar('\n');
- } else
- {
- int i, j;
+/*
+ * int i: for iteration in for loop also use as a way to subtract.
+ *
+ * int margin: will recored the amount of whitesapce ill need to print.
+ * int dis"tance": is used to offset size.
+ * int to_print: is used to tell how many '#' will need to be print per-line
+ */
+	int i, margin, dis, to_print;
 
- for (i = 1; i <= size; i++)
- {
- for (j = i; j < size; j++)
- {
- _putchar(' ');
- }
+	if (size <= 0)
+	{
+		_putchar('\n');
+		return;
+	}
 
- for (j = 1; j <= i; j++)
- {
- _putchar('#');
- }
+	dis = size - 1;
+	for (i = 0 ; i < size ; i++)
+	{
+		margin = 0;
+		while (margin < (dis - i))
+		{
+			_putchar(32);
+			margin++;
+		}
 
- _putchar('\n');
- }
- }
+		to_print = size - margin;
+
+		while (to_print > 0)
+		{
+			_putchar('#');
+			to_print--;
+		}
+		_putchar('\n');
+	}
 }
+
+
 
