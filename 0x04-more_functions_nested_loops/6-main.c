@@ -5,11 +5,12 @@
  *
  * Return: Always 0.
  */
-int main(void)
+void print_line(int n)
 {
-    print_line(0);
-    print_line(2);
-    print_line(10);
-    print_line(-4);
-    return (0);
+	while (!(n <= 0))
+	{
+		_putchar('_');
+		n--;
+}
+	_putchar('\n');
 }
