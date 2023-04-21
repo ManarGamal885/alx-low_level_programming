@@ -1,38 +1,36 @@
-#include <stdio.h>
-#include "function_pointers.h"
-
+#include "3-calc.h"
 /**
- * print_elem - prints an integer
- * @elem: the integer to print
- *
- * Return: Nothing.
- */
-void print_elem(int elem)
+ * main - Entry point
+ * @argc: the number of the parameters
+ * @argv: the parameters in the case the number to be calculated.
+(* a blank line
+* Description: this program is the enttry point for a calculator)?
+(* section header: 3-calc.h)*
+* Return: 0 in success
+*/
+int main(int argc, char *argv[])
 {
-    printf("%d\n", elem);
-}
+	int n1, n2, result;
+	int (*p)(int, int);
 
-/**
- * print_elem_hex - prints an integer, in hexadecimal
- * @elem: the integer to print
- *
- * Return: Nothing.
- */
-void print_elem_hex(int elem)
-{
-    printf("0x%x\n", elem);
-}
+	if (argc < 4 || argc > 4)
+	{
+		printf("Error\n");
+		exit(98);
+	}
 
-/**
- * main - check the code
- *
- * Return: Always 0.
- */
-int main(void)
-{
-    int array[5] = {0, 98, 402, 1024, 4096};
+	n1 = atoi(argv[1]);
+	n2 = atoi(argv[3]);
 
-    array_iterator(array, 5, &print_elem);
-    array_iterator(array, 5, &print_elem_hex);
-    return (0);
+	p = get_op_func(argv[2]);
+
+	if (p == NULL)
+	{
+		printf("Error\n");
+		exit(99);
+	}
+	result = p(n1, n2);
+
+	printf("%d\n", result);
+	return (0);
 }
